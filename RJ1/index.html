@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Runcorn Joinery — Bespoke Kitchens & Joinery</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: "#29438D",
+          brandDark: "#203570",
+          brandLight: "#B4BFF0",
+          ink: "#1a1a1a",
+          inkDim: "#6b7280"
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  .container { @apply mx-auto max-w-7xl px-4; }
+  .section-pad { @apply py-16 md:py-24; }
+  /* easy keyword highlighter */
+  .kw { @apply text-brand font-semibold; }
+</style>
+
+
+  <style>
+    .container { @apply mx-auto max-w-7xl px-4; }
+    .section-pad { @apply py-16 md:py-24; }
+  </style>
+</head>
+<body class="antialiased text-ink bg-white scroll-smooth">
+
+  <!-- Top Demo Banner (dismissible) -->
+  <div id="demoBanner" class="bg-amber-100 border-b border-amber-300 text-amber-900">
+    <div class="container flex items-center justify-between py-2 text-sm">
+      <p>This is for demonstration purposes only.</p>
+      <button aria-label="Dismiss banner"
+              class="p-1 rounded hover:bg-amber-200"
+              onclick="document.getElementById('demoBanner').remove()">
+        ✕
+      </button>
+    </div>
+  </div>
+
+  <!-- Header / Navbar -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-100">
+    <nav class="container flex items-center justify-between h-16">
+      <!-- LOGO -->
+      <a href="#top" class="flex items-center gap-3" aria-label="Runcorn Joinery home">
+        <!-- Replace with your actual file. Keep the class to control size -->
+        <img src="./assets/logo.svg" alt="Runcorn Joinery logo" class="h-9 w-auto" />
+        <span class="font-semibold tracking-tight">Runcorn Joinery</span>
+      </a>
+
+      <!-- Desktop Nav (no Contact Us button now) -->
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#about" class="hover:text-brand">About</a>
+        <a href="#services" class="hover:text-brand">Services</a>
+        <a href="#gallery" class="hover:text-brand">Gallery</a>
+        <a href="#contact" class="hover:text-brand">Contact</a>
+      </div>
+
+      <!-- Mobile menu trigger (placeholder) -->
+      <button class="md:hidden p-2 rounded hover:bg-gray-100" aria-label="Open menu">☰</button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+<section id="top" class="relative overflow-hidden">
+  <div class="container section-pad grid md:grid-cols-2 gap-10 items-center">
+    <!-- Text content -->
+    <div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
+        Bespoke <span class="text-brand">Kitchens</span> & Joinery
+      </h1>
+      <p class="mt-4 text-lg text-inkDim">
+        Affordable quality • 25+ years’ experience • Free consultation
+      </p>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="tel:+441928890493" class="rounded-lg bg-brand px-5 py-3 text-white hover:opacity-90">
+          Call: 01928 890493
+        </a>
+        <a href="mailto:runcornjoinery@gmail.com" class="rounded-lg border border-gray-300 px-5 py-3 hover:bg-gray-50">
+          Email Us
+        </a>
+        <a href="#contact" class="rounded-lg border border-gray-300 px-5 py-3 hover:bg-gray-50">
+          Contact Details
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero visual: now your logo -->
+    <div class="relative flex items-center justify-center">
+      <div class="aspect-[4/3] w-full rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+        <img src="./assets/logo.svg" alt="Runcorn Joinery logo" class="h-64 w-auto md:h-72 lg:h-80">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- About -->
+  <section id="about" class="section-pad bg-gray-50">
+    <div class="container">
+      <h2 class="text-2xl md:text-3xl font-bold">About</h2>
+      <div class="mt-3 h-1 w-20 rounded-full bg-brand"></div>
+      <p class="mt-6 max-w-3xl text-inkDim">
+        We design, build and install bespoke kitchens, wardrobes, alcove units and custom joinery across Cheshire.
+        Every project is crafted with care, attention to detail and a fair price.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section-pad">
+    <div class="container">
+      <h2 class="text-2xl md:text-3xl font-bold"><span class="text-brand">Services</span></h2>
+      <div class="mt-3 h-1 w-20 rounded-full bg-brand"></div>
+
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-2xl border border-gray-200 p-6 hover:shadow-sm">
+          <h3 class="font-semibold">Bespoke Kitchens</h3>
+          <p class="mt-2 text-inkDim">Design, build and installation tailored to your space and budget.</p>
+        </article>
+        <article class="rounded-2xl border border-gray-200 p-6 hover:shadow-sm">
+          <h3 class="font-semibold">Fitted Wardrobes</h3>
+          <p class="mt-2 text-inkDim">Maximise storage with elegant, built-in solutions.</p>
+        </article>
+        <article class="rounded-2xl border border-gray-200 p-6 hover:shadow-sm">
+          <h3 class="font-semibold">Custom Joinery</h3>
+          <p class="mt-2 text-inkDim">Alcoves, media walls, shelves, doors and more.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="section-pad bg-gray-50">
+    <div class="container">
+      <h2 class="text-2xl md:text-3xl font-bold">Gallery</h2>
+      <div class="mt-3 h-1 w-20 rounded-full bg-brand"></div>
+
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  <img src="./assets/kitchen1.jpg" alt="Bespoke kitchen" class="w-full h-auto rounded-xl object-cover">
+  <img src="./assets/kitchen2.jpg" alt="Modern kitchen design" class="w-full h-auto rounded-xl object-cover">
+  <img src="./assets/kitchen3.jpg" alt="Fitted wardrobes" class="w-full h-auto rounded-xl object-cover">
+  <img src="./assets/wardrobe1.jpg" alt="Wardrobe joinery" class="w-full h-auto rounded-xl object-cover">
+  <img src="./assets/joinery1.jpg" alt="Custom joinery project" class="w-full h-auto rounded-xl object-cover">
+  <img src="./assets/joinery2.jpg" alt="Woodwork craftsmanship" class="w-full h-auto rounded-xl object-cover">
+</div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section-pad">
+    <div class="container">
+      <h2 class="text-2xl md:text-3xl font-bold">Contact</h2>
+      <div class="mt-3 h-1 w-20 rounded-full bg-brand"></div>
+
+      <div class="mt-8 grid gap-8 md:grid-cols-2">
+        <!-- Details -->
+        <div class="space-y-4">
+          <a href="tel:+441928890493" class="flex items-center gap-3 group">
+            <span class="text-xl">📞</span>
+            <span class="group-hover:text-brand">01928 890493</span>
+          </a>
+          <a href="tel:+447598946967" class="flex items-center gap-3 group">
+            <span class="text-xl">📱</span>
+            <span class="group-hover:text-brand">07598 946967</span>
+          </a>
+          <a href="mailto:runcornjoinery@gmail.com" class="flex items-center gap-3 group">
+            <span class="text-xl">✉️</span>
+            <span class="group-hover:text-brand">runcornjoinery@gmail.com</span>
+          </a>
+          <a class="flex items-center gap-3 group"
+             href="https://www.facebook.com/people/Runcorn-Joinery/100054297770708/"
+             target="_blank" rel="noopener">
+            <span class="text-xl">👍</span>
+            <span class="group-hover:text-brand">Runcorn Joinery on Facebook</span>
+          </a>
+        </div>
+
+        <!-- Netlify-ready Contact Form (mock) -->
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+              class="rounded-2xl border border-gray-200 p-6">
+          <!-- Netlify requirements -->
+          <input type="hidden" name="form-name" value="contact" />
+          <!-- Honeypot -->
+          <p class="hidden">
+            <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+          </p>
+
+          <div class="grid gap-3">
+            <label class="text-sm font-medium">Name
+              <input name="name" required class="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3" placeholder="Your name">
+            </label>
+
+            <label class="text-sm font-medium">Email
+              <input type="email" name="email" required class="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3" placeholder="you@example.com">
+            </label>
+
+            <label class="text-sm font-medium">Phone (optional)
+              <input type="tel" name="phone" class="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3" placeholder="07…">
+            </label>
+
+            <label class="text-sm font-medium">Message
+              <textarea name="message" rows="4" required class="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3" placeholder="Tell us about your project…"></textarea>
+            </label>
+
+            <button class="rounded-lg bg-brand px-5 py-3 text-white hover:opacity-90">Send</button>
+            <p class="text-xs text-inkDim">By submitting, you agree we may contact you about your enquiry.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200">
+    <div class="container py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-inkDim">© <span id="year"></span> Runcorn Joinery. All rights reserved.</p>
+      <div class="flex items-center gap-6 text-sm">
+        <a href="#top" class="hover:text-brand">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
