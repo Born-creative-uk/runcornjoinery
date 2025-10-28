@@ -49,15 +49,40 @@
     <section id="gallery" class="section">
       <div class="container">
         <h2 class="section-title">Recent Work</h2>
-        <div class="image-grid">
-          <figure class="card">
-            <img src="assets/kitchen.jpg" alt="Kitchen installation example" />
-            <figcaption>Kitchen installation • full project management</figcaption>
-          </figure>
-          <figure class="card">
-            <img src="assets/conservatory.jpg" alt="Conservatory joinery example" />
-            <figcaption>Joinery & finishing • tidy, reliable, on time</figcaption>
-          </figure>
+        <div
+          class="gallery-slider"
+          data-slider
+          data-interval="6000"
+          aria-live="polite"
+          role="region"
+          aria-label="Recent project photos"
+        >
+          <div class="slides">
+            <figure class="slide is-active" data-slide>
+              <img src="assets/kitchen.jpg" alt="Kitchen installation example" />
+              <figcaption>Kitchen installation • full project management</figcaption>
+            </figure>
+            <figure class="slide" data-slide>
+              <img src="assets/conservatory.jpg" alt="Conservatory joinery example" />
+              <figcaption>Joinery & finishing • tidy, reliable, on time</figcaption>
+            </figure>
+          </div>
+          <button
+            class="slider-btn prev"
+            type="button"
+            data-slider-prev
+            aria-label="Show previous project photo"
+          >
+            &#8249;
+          </button>
+          <button
+            class="slider-btn next"
+            type="button"
+            data-slider-next
+            aria-label="Show next project photo"
+          >
+            &#8250;
+          </button>
         </div>
       </div>
     </section>
