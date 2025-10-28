@@ -76,18 +76,80 @@ body{
   box-shadow:var(--shadow); border:1px solid var(--border);
 }
 
-/* Image grid */
-.image-grid{
-  display:grid; gap:1rem;
-  grid-template-columns:repeat(12,1fr);
+/* Gallery slider */
+.gallery-slider{
+  position:relative;
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  background:#010511;
 }
-.image-grid .card{
-  grid-column:span 6;
-  background:var(--card); border:1px solid var(--border);
-  border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
+
+.gallery-slider .slides{
+  position:relative;
+  aspect-ratio:4 / 3;
 }
-.image-grid .card img{display:block; width:100%; height:auto}
-.image-grid figcaption{padding:.8rem 1rem; color:var(--ink-dim); font-size:.95rem}
+
+.gallery-slider .slide{
+  position:absolute;
+  inset:0;
+  margin:0;
+  opacity:0;
+  transition:opacity .8s ease;
+}
+
+.gallery-slider .slide.is-active{opacity:1;}
+
+.gallery-slider img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.gallery-slider figcaption{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  margin:0;
+  padding:1rem 1.2rem;
+  background:linear-gradient(180deg, rgba(4,8,24,0) 0%, rgba(4,8,24,.78) 100%);
+  color:#fff;
+  font-weight:600;
+  letter-spacing:.01em;
+}
+
+.slider-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:0;
+  background:rgba(255,255,255,.9);
+  color:var(--brand-900);
+  font-size:1.6rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+  transition:background .2s ease;
+  z-index:2;
+}
+
+.slider-btn:hover{background:#fff;}
+
+.slider-btn:focus-visible{
+  outline:3px solid var(--brand-400);
+  outline-offset:2px;
+}
+
+.slider-btn.prev{left:1rem;}
+.slider-btn.next{right:1rem;}
 
 /* About (bordered) */
 .about.bordered{
@@ -138,7 +200,6 @@ body{
 /* Responsive */
 @media (max-width: 900px){
   .hero-inner{grid-template-columns:1fr}
-  .image-grid .card{grid-column:span 12}
   .nav-toggle{display:inline-block}
   .nav-list{
     position:absolute; right:1rem; top:64px; background:#fff;
@@ -146,4 +207,13 @@ body{
     display:none; flex-direction:column; gap:.2rem; box-shadow:var(--shadow);
   }
   .nav-list.open{display:flex}
+}
+
+@media (max-width: 700px){
+  .gallery-slider .slides{aspect-ratio:1 / 1;}
+  .slider-btn{
+    width:36px;
+    height:36px;
+    font-size:1.4rem;
+  }
 }
