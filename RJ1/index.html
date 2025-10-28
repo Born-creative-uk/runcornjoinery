@@ -23,17 +23,75 @@
 </script>
 
 <style>
-  .container { @apply mx-auto max-w-7xl px-4; }
-  .section-pad { @apply py-16 md:py-24; }
-  /* easy keyword highlighter */
-  .kw { @apply text-brand font-semibold; }
+  :root {
+    color-scheme: light;
+  }
+
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 72rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  .section-pad {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-pad {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #29438d;
+  }
+
+  .fade-section {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .slideshow {
+    position: relative;
+  }
+
+  .slideshow-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
+  .slideshow-slide.is-active {
+    opacity: 1;
+  }
 </style>
-
-
-  <style>
-    .container { @apply mx-auto max-w-7xl px-4; }
-    .section-pad { @apply py-16 md:py-24; }
-  </style>
 </head>
 <body class="antialiased text-ink bg-white scroll-smooth">
 
@@ -50,13 +108,13 @@
   </div>
 
   <!-- Header / Navbar -->
-  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-100">
-    <nav class="container flex items-center justify-between h-16">
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100">
+    <nav class="container flex items-center justify-between py-4">
       <!-- LOGO -->
       <a href="#top" class="flex items-center gap-3" aria-label="Runcorn Joinery home">
         <!-- Replace with your actual file. Keep the class to control size -->
-        <img src="./assets/logo.svg" alt="Runcorn Joinery logo" class="h-9 w-auto" />
-        <span class="font-semibold tracking-tight">Runcorn Joinery</span>
+        <img src="./assets/logo.svg" alt="Runcorn Joinery logo" class="h-12 w-auto drop-shadow-sm" />
+        <span class="text-lg font-semibold tracking-tight">Runcorn Joinery</span>
       </a>
 
       <!-- Desktop Nav (no Contact Us button now) -->
@@ -73,12 +131,12 @@
   </header>
 
   <!-- Hero -->
-<section id="top" class="relative overflow-hidden">
-  <div class="container section-pad grid md:grid-cols-2 gap-10 items-center">
+<section id="top" class="relative overflow-hidden bg-gradient-to-b from-white via-white to-brandLight/20">
+  <div class="container section-pad grid gap-12 md:grid-cols-2 md:items-center lg:gap-16 fade-section is-visible">
     <!-- Text content -->
     <div>
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
-        Bespoke <span class="text-brand">Kitchens</span> & Joinery
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+        Bespoke Kitchens & Joinery
       </h1>
       <p class="mt-4 text-lg text-inkDim">
         Affordable quality • 25+ years’ experience • Free consultation
@@ -99,8 +157,8 @@
 
     <!-- Hero visual: now your logo -->
     <div class="relative flex items-center justify-center">
-      <div class="aspect-[4/3] w-full rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
-        <img src="./assets/logo.svg" alt="Runcorn Joinery logo" class="h-64 w-auto md:h-72 lg:h-80">
+      <div class="aspect-[4/3] w-full max-w-lg rounded-3xl border border-gray-200 bg-gradient-to-br from-gray-50 via-white to-brandLight/40 shadow-xl flex items-center justify-center">
+        <img src="./assets/logo.svg" alt="Runcorn Joinery logo" class="h-72 w-auto md:h-80 lg:h-[22rem] drop-shadow-lg">
       </div>
     </div>
   </div>
@@ -109,10 +167,10 @@
 
   <!-- About -->
   <section id="about" class="section-pad bg-gray-50">
-    <div class="container">
-      <h2 class="text-2xl md:text-3xl font-bold">About</h2>
+    <div class="container space-y-6 fade-section">
+      <h2 class="text-3xl font-bold">About</h2>
       <div class="mt-3 h-1 w-20 rounded-full bg-brand"></div>
-      <p class="mt-6 max-w-3xl text-inkDim">
+      <p class="max-w-3xl text-lg leading-relaxed text-inkDim">
         We design, build and install bespoke kitchens, wardrobes, alcove units and custom joinery across Cheshire.
         Every project is crafted with care, attention to detail and a fair price.
       </p>
@@ -121,22 +179,22 @@
 
   <!-- Services -->
   <section id="services" class="section-pad">
-    <div class="container">
-      <h2 class="text-2xl md:text-3xl font-bold"><span class="text-brand">Services</span></h2>
+    <div class="container space-y-10 fade-section">
+      <h2 class="text-3xl font-bold">Services</h2>
       <div class="mt-3 h-1 w-20 rounded-full bg-brand"></div>
 
-      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <article class="rounded-2xl border border-gray-200 p-6 hover:shadow-sm">
-          <h3 class="font-semibold">Bespoke Kitchens</h3>
-          <p class="mt-2 text-inkDim">Design, build and installation tailored to your space and budget.</p>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="flex h-full flex-col rounded-3xl border border-gray-200 bg-white/80 p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+          <h3 class="text-xl font-semibold">Bespoke Kitchens</h3>
+          <p class="mt-3 text-inkDim">Design, build and installation tailored to your space and budget.</p>
         </article>
-        <article class="rounded-2xl border border-gray-200 p-6 hover:shadow-sm">
-          <h3 class="font-semibold">Fitted Wardrobes</h3>
-          <p class="mt-2 text-inkDim">Maximise storage with elegant, built-in solutions.</p>
+        <article class="flex h-full flex-col rounded-3xl border border-gray-200 bg-white/80 p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+          <h3 class="text-xl font-semibold">Fitted Wardrobes</h3>
+          <p class="mt-3 text-inkDim">Maximise storage with elegant, built-in solutions.</p>
         </article>
-        <article class="rounded-2xl border border-gray-200 p-6 hover:shadow-sm">
-          <h3 class="font-semibold">Custom Joinery</h3>
-          <p class="mt-2 text-inkDim">Alcoves, media walls, shelves, doors and more.</p>
+        <article class="flex h-full flex-col rounded-3xl border border-gray-200 bg-white/80 p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+          <h3 class="text-xl font-semibold">Custom Joinery</h3>
+          <p class="mt-3 text-inkDim">Alcoves, media walls, shelves, doors and more.</p>
         </article>
       </div>
     </div>
@@ -144,44 +202,54 @@
 
   <!-- Gallery -->
   <section id="gallery" class="section-pad bg-gray-50">
-    <div class="container">
-      <h2 class="text-2xl md:text-3xl font-bold">Gallery</h2>
+    <div class="container space-y-10 fade-section">
+      <h2 class="text-3xl font-bold">Gallery</h2>
       <div class="mt-3 h-1 w-20 rounded-full bg-brand"></div>
 
-      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-  <img src="./assets/kitchen1.jpg" alt="Bespoke kitchen" class="w-full h-auto rounded-xl object-cover">
-  <img src="./assets/kitchen2.jpg" alt="Modern kitchen design" class="w-full h-auto rounded-xl object-cover">
-  <img src="./assets/kitchen3.jpg" alt="Fitted wardrobes" class="w-full h-auto rounded-xl object-cover">
-  <img src="./assets/wardrobe1.jpg" alt="Wardrobe joinery" class="w-full h-auto rounded-xl object-cover">
-  <img src="./assets/joinery1.jpg" alt="Custom joinery project" class="w-full h-auto rounded-xl object-cover">
-  <img src="./assets/joinery2.jpg" alt="Woodwork craftsmanship" class="w-full h-auto rounded-xl object-cover">
-</div>
+      <div class="relative overflow-hidden rounded-3xl border border-gray-200 bg-white/70 p-4 shadow-xl">
+        <div class="slideshow relative aspect-[16/9] overflow-hidden rounded-2xl">
+          <img src="./assets/kitchen1.jpg" alt="Bespoke kitchen" class="slideshow-slide is-active">
+          <img src="./assets/kitchen2.jpg" alt="Modern kitchen design" class="slideshow-slide">
+          <img src="./assets/kitchen3.jpg" alt="Fitted wardrobes" class="slideshow-slide">
+          <img src="./assets/wardrobe1.jpg" alt="Wardrobe joinery" class="slideshow-slide">
+          <img src="./assets/joinery1.jpg" alt="Custom joinery project" class="slideshow-slide">
+          <img src="./assets/joinery2.jpg" alt="Woodwork craftsmanship" class="slideshow-slide">
+        </div>
+        <div class="pointer-events-none absolute inset-x-0 bottom-4 flex items-center justify-center gap-2" aria-hidden="true">
+          <span class="h-2 w-8 rounded-full bg-white/40 backdrop-blur" data-slide-indicator="0"></span>
+          <span class="h-2 w-8 rounded-full bg-white/40 backdrop-blur" data-slide-indicator="1"></span>
+          <span class="h-2 w-8 rounded-full bg-white/40 backdrop-blur" data-slide-indicator="2"></span>
+          <span class="h-2 w-8 rounded-full bg-white/40 backdrop-blur" data-slide-indicator="3"></span>
+          <span class="h-2 w-8 rounded-full bg-white/40 backdrop-blur" data-slide-indicator="4"></span>
+          <span class="h-2 w-8 rounded-full bg-white/40 backdrop-blur" data-slide-indicator="5"></span>
+        </div>
+      </div>
 
     </div>
   </section>
 
   <!-- Contact -->
   <section id="contact" class="section-pad">
-    <div class="container">
-      <h2 class="text-2xl md:text-3xl font-bold">Contact</h2>
+    <div class="container space-y-10 fade-section">
+      <h2 class="text-3xl font-bold">Contact</h2>
       <div class="mt-3 h-1 w-20 rounded-full bg-brand"></div>
 
-      <div class="mt-8 grid gap-8 md:grid-cols-2">
+      <div class="grid gap-10 md:grid-cols-2">
         <!-- Details -->
-        <div class="space-y-4">
-          <a href="tel:+441928890493" class="flex items-center gap-3 group">
+        <div class="space-y-5">
+          <a href="tel:+441928890493" class="flex items-center gap-3 group text-lg">
             <span class="text-xl">📞</span>
             <span class="group-hover:text-brand">01928 890493</span>
           </a>
-          <a href="tel:+447598946967" class="flex items-center gap-3 group">
+          <a href="tel:+447598946967" class="flex items-center gap-3 group text-lg">
             <span class="text-xl">📱</span>
             <span class="group-hover:text-brand">07598 946967</span>
           </a>
-          <a href="mailto:runcornjoinery@gmail.com" class="flex items-center gap-3 group">
+          <a href="mailto:runcornjoinery@gmail.com" class="flex items-center gap-3 group text-lg">
             <span class="text-xl">✉️</span>
             <span class="group-hover:text-brand">runcornjoinery@gmail.com</span>
           </a>
-          <a class="flex items-center gap-3 group"
+          <a class="flex items-center gap-3 group text-lg"
              href="https://www.facebook.com/people/Runcorn-Joinery/100054297770708/"
              target="_blank" rel="noopener">
             <span class="text-xl">👍</span>
@@ -191,7 +259,7 @@
 
         <!-- Netlify-ready Contact Form (mock) -->
         <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-              class="rounded-2xl border border-gray-200 p-6">
+              class="rounded-3xl border border-gray-200 bg-white/80 p-8 shadow-md">
           <!-- Netlify requirements -->
           <input type="hidden" name="form-name" value="contact" />
           <!-- Honeypot -->
@@ -216,7 +284,7 @@
               <textarea name="message" rows="4" required class="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3" placeholder="Tell us about your project…"></textarea>
             </label>
 
-            <button class="rounded-lg bg-brand px-5 py-3 text-white hover:opacity-90">Send</button>
+            <button class="rounded-lg bg-brand px-6 py-3 text-white shadow-sm transition hover:-translate-y-0.5 hover:opacity-90">Send</button>
             <p class="text-xs text-inkDim">By submitting, you agree we may contact you about your enquiry.</p>
           </div>
         </form>
@@ -226,7 +294,7 @@
 
   <!-- Footer -->
   <footer class="border-t border-gray-200">
-    <div class="container py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="container py-10 flex flex-col md:flex-row items-center justify-between gap-4">
       <p class="text-sm text-inkDim">© <span id="year"></span> Runcorn Joinery. All rights reserved.</p>
       <div class="flex items-center gap-6 text-sm">
         <a href="#top" class="hover:text-brand">Back to top ↑</a>
@@ -236,6 +304,48 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const fadeSections = document.querySelectorAll('.fade-section');
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      fadeSections.forEach((section) => observer.observe(section));
+    } else {
+      fadeSections.forEach((section) => section.classList.add('is-visible'));
+    }
+
+    const slides = Array.from(document.querySelectorAll('.slideshow-slide'));
+    const indicators = Array.from(document.querySelectorAll('[data-slide-indicator]'));
+
+    if (slides.length > 0) {
+      let currentSlide = 0;
+
+      const activateSlide = (index) => {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('is-active', i === index);
+        });
+        indicators.forEach((indicator, i) => {
+          indicator.style.opacity = i === index ? '1' : '0.4';
+          indicator.style.backgroundColor = i === index ? 'rgba(41, 67, 141, 0.9)' : 'rgba(255, 255, 255, 0.4)';
+        });
+      };
+
+      activateSlide(currentSlide);
+
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        activateSlide(currentSlide);
+      }, 5000);
+    }
   </script>
 </body>
 </html>
