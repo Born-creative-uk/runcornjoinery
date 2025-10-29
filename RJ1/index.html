@@ -174,7 +174,7 @@
   <section id="about" class="section-pad bg-gray-50">
     <div class="container space-y-6 fade-section">
       <h2 class="text-3xl font-bold">About</h2>
-      <div class="mt-3 h-1 w-20 rounded-full bg-brand"></div>
+      <div class="mt-3 h-1 w-20 rounded-full bg-brand mx-auto"></div>
       <p class="max-w-3xl text-lg leading-relaxed text-inkDim">
         We design, build and install bespoke kitchens, wardrobes, alcove units and custom joinery across Cheshire.
         Every project is crafted with care, attention to detail and a fair price.
@@ -186,7 +186,7 @@
   <section id="services" class="section-pad">
     <div class="container space-y-10 fade-section">
       <h2 class="text-3xl font-bold">Services</h2>
-      <div class="mt-3 h-1 w-20 rounded-full bg-brand"></div>
+      <div class="mt-3 h-1 w-20 rounded-full bg-brand mx-auto"></div>
 
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <article class="flex h-full flex-col rounded-3xl border border-gray-200 bg-white/80 p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
@@ -209,10 +209,10 @@
   <section id="gallery" class="section-pad bg-gray-50">
     <div class="container space-y-10 fade-section">
       <h2 class="text-3xl font-bold">Gallery</h2>
-      <div class="mt-3 h-1 w-20 rounded-full bg-brand"></div>
+      <div class="mt-3 h-1 w-20 rounded-full bg-brand mx-auto"></div>
 
       <div class="relative overflow-hidden rounded-3xl border border-gray-200 bg-white/70 p-4 shadow-xl">
-        <div class="slideshow relative aspect-[16/9] overflow-hidden rounded-2xl">
+        <div class="slideshow relative aspect-[16/9] overflow-hidden rounded-2xl cursor-zoom-in focus:outline-none focus:ring-4 focus:ring-brand/40" role="button" tabindex="0" aria-label="Open gallery slideshow in a larger view">
           <img src="./assets/kitchen1.jpg" alt="Bespoke kitchen" class="slideshow-slide is-active">
           <img src="./assets/kitchen2.jpg" alt="Modern kitchen design" class="slideshow-slide">
           <img src="./assets/kitchen3.jpg" alt="Fitted wardrobes" class="slideshow-slide">
@@ -230,6 +230,15 @@
         </div>
       </div>
 
+      <div id="slideshowLightbox" class="fixed inset-0 z-[60] hidden flex items-center justify-center bg-black/80 p-6" aria-hidden="true">
+        <button type="button" class="absolute right-6 top-6 rounded-full bg-white/20 p-2 text-white transition hover:bg-white/40" data-close-lightbox aria-label="Close gallery view">
+          ✕
+        </button>
+        <div class="max-w-5xl w-full">
+          <img id="slideshowLightboxImage" src="" alt="" class="mx-auto max-h-[80vh] w-full rounded-2xl object-contain shadow-2xl">
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -237,24 +246,24 @@
   <section id="contact" class="section-pad">
     <div class="container space-y-10 fade-section">
       <h2 class="text-3xl font-bold">Contact</h2>
-      <div class="mt-3 h-1 w-20 rounded-full bg-brand"></div>
+      <div class="mt-3 h-1 w-20 rounded-full bg-brand mx-auto"></div>
 
       <div class="grid gap-10 md:grid-cols-2">
         <!-- Details -->
-        <div class="space-y-5">
-          <a href="tel:+441928890493" class="flex items-center gap-3 group text-lg">
+        <div class="space-y-5 text-center">
+          <a href="tel:+441928890493" class="flex items-center justify-center gap-3 group text-lg">
             <span class="text-xl">📞</span>
             <span class="group-hover:text-brand">01928 890493</span>
           </a>
-          <a href="tel:+447598946967" class="flex items-center gap-3 group text-lg">
+          <a href="tel:+447598946967" class="flex items-center justify-center gap-3 group text-lg">
             <span class="text-xl">📱</span>
             <span class="group-hover:text-brand">07598 946967</span>
           </a>
-          <a href="mailto:runcornjoinery@gmail.com" class="flex items-center gap-3 group text-lg">
+          <a href="mailto:runcornjoinery@gmail.com" class="flex items-center justify-center gap-3 group text-lg">
             <span class="text-xl">✉️</span>
             <span class="group-hover:text-brand">runcornjoinery@gmail.com</span>
           </a>
-          <a class="flex items-center gap-3 group text-lg"
+          <a class="flex items-center justify-center gap-3 group text-lg"
              href="https://www.facebook.com/people/Runcorn-Joinery/100054297770708/"
              target="_blank" rel="noopener">
             <span class="text-xl">👍</span>
@@ -328,8 +337,12 @@
       fadeSections.forEach((section) => section.classList.add('is-visible'));
     }
 
+    const slideshowContainer = document.querySelector('.slideshow');
     const slides = Array.from(document.querySelectorAll('.slideshow-slide'));
     const indicators = Array.from(document.querySelectorAll('[data-slide-indicator]'));
+    const lightbox = document.getElementById('slideshowLightbox');
+    const lightboxImage = document.getElementById('slideshowLightboxImage');
+    const lightboxClose = lightbox ? lightbox.querySelector('[data-close-lightbox]') : null;
 
     if (slides.length > 0) {
       let currentSlide = 0;
@@ -350,6 +363,58 @@
         currentSlide = (currentSlide + 1) % slides.length;
         activateSlide(currentSlide);
       }, 5000);
+
+      const openLightbox = () => {
+        if (!lightbox || !lightboxImage || !slideshowContainer) return;
+        const activeSlide = slideshowContainer.querySelector('.slideshow-slide.is-active');
+        if (!activeSlide) return;
+        lightboxImage.src = activeSlide.getAttribute('src');
+        lightboxImage.alt = activeSlide.getAttribute('alt') || '';
+        lightbox.classList.remove('hidden');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (lightboxClose) {
+          lightboxClose.focus({ preventScroll: true });
+        }
+      };
+
+      const closeLightbox = () => {
+        if (!lightbox) return;
+        lightbox.classList.add('hidden');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.removeProperty('overflow');
+        if (slideshowContainer) {
+          slideshowContainer.focus({ preventScroll: true });
+        }
+      };
+
+      if (slideshowContainer) {
+        slideshowContainer.addEventListener('click', openLightbox);
+        slideshowContainer.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openLightbox();
+          }
+        });
+      }
+
+      if (lightbox) {
+        lightbox.addEventListener('click', (event) => {
+          if (event.target === lightbox) {
+            closeLightbox();
+          }
+        });
+      }
+
+      if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+      }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && lightbox && !lightbox.classList.contains('hidden')) {
+          closeLightbox();
+        }
+      });
     }
   </script>
 </body>
