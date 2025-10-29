@@ -96,6 +96,34 @@
   .slideshow-slide.is-active {
     opacity: 1;
   }
+
+  .btn {
+    background: linear-gradient(135deg, #29438d, #203570);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 9999px;
+    box-shadow: 0 10px 30px -12px rgba(41, 67, 141, 0.7);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  }
+
+  .btn:hover,
+  .btn:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px -12px rgba(41, 67, 141, 0.7);
+    opacity: 0.95;
+  }
+
+  .btn-secondary {
+    background: #fff;
+    color: #29438d;
+    border: 2px solid #29438d;
+  }
+
+  .btn-secondary:hover,
+  .btn-secondary:focus-visible {
+    background: #29438d;
+    color: #fff;
+  }
 </style>
 </head>
 <body class="antialiased text-ink bg-white scroll-smooth">
@@ -154,7 +182,7 @@
   </nav>
 
   <section class="hero fade-on-load" aria-label="Intro">
-    <div class="hero-content mx-auto max-w-3xl px-4 py-12 text-center">
+    <div class="hero-content mx-auto max-w-3xl px-4 py-12 text-center rounded-3xl border-2 border-brandLight bg-white/80 shadow-xl backdrop-blur">
       <!-- LOGO ABOVE TITLE, NO BORDER BOX -->
       <img
         src="./assets/logo.svg"
@@ -186,13 +214,15 @@
 
   <!-- About -->
   <section id="about" class="section-pad bg-gray-50">
-    <div class="container space-y-6 fade-section">
-      <h2 class="text-3xl font-bold">About</h2>
-      <div class="mt-3 h-1 w-20 rounded-full bg-brand mx-auto"></div>
-      <p class="max-w-3xl text-lg leading-relaxed text-inkDim">
-        We design, build and install bespoke kitchens, wardrobes, alcove units and custom joinery across Cheshire.
-        Every project is crafted with care, attention to detail and a fair price.
-      </p>
+    <div class="container fade-section">
+      <div class="space-y-6 rounded-3xl border-2 border-brandLight bg-white/80 p-10 shadow-lg">
+        <h2 class="text-3xl font-bold">About</h2>
+        <div class="mt-3 h-1 w-20 rounded-full bg-brand mx-auto"></div>
+        <p class="max-w-3xl text-lg leading-relaxed text-inkDim mx-auto">
+          We design, build and install bespoke kitchens, wardrobes, alcove units and custom joinery across Cheshire.
+          Every project is crafted with care, attention to detail and a fair price.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -258,36 +288,37 @@
 
   <!-- Contact -->
   <section id="contact" class="section-pad">
-    <div class="container space-y-10 fade-section">
-      <h2 class="text-3xl font-bold">Contact</h2>
-      <div class="mt-3 h-1 w-20 rounded-full bg-brand mx-auto"></div>
+    <div class="container fade-section">
+      <div class="space-y-10 rounded-3xl border-2 border-brandLight bg-white/80 p-10 shadow-lg">
+        <h2 class="text-3xl font-bold">Contact</h2>
+        <div class="mt-3 h-1 w-20 rounded-full bg-brand mx-auto"></div>
 
-      <div class="grid gap-10 md:grid-cols-2">
-        <!-- Details -->
-        <div class="space-y-5 text-center">
-          <a href="tel:+441928890493" class="flex items-center justify-center gap-3 group text-lg">
-            <span class="text-xl">📞</span>
-            <span class="group-hover:text-brand">01928 890493</span>
-          </a>
-          <a href="tel:+447598946967" class="flex items-center justify-center gap-3 group text-lg">
-            <span class="text-xl">📱</span>
-            <span class="group-hover:text-brand">07598 946967</span>
-          </a>
-          <a href="mailto:runcornjoinery@gmail.com" class="flex items-center justify-center gap-3 group text-lg">
-            <span class="text-xl">✉️</span>
-            <span class="group-hover:text-brand">runcornjoinery@gmail.com</span>
-          </a>
-          <a class="flex items-center justify-center gap-3 group text-lg"
-             href="https://www.facebook.com/people/Runcorn-Joinery/100054297770708/"
-             target="_blank" rel="noopener">
-            <span class="text-xl">👍</span>
-            <span class="group-hover:text-brand">Runcorn Joinery on Facebook</span>
-          </a>
-        </div>
+        <div class="grid gap-10 md:grid-cols-2">
+          <!-- Details -->
+          <div class="space-y-5 text-center">
+            <a href="tel:+441928890493" class="flex items-center justify-center gap-3 group text-lg">
+              <span class="text-xl">📞</span>
+              <span class="group-hover:text-brand">01928 890493</span>
+            </a>
+            <a href="tel:+447598946967" class="flex items-center justify-center gap-3 group text-lg">
+              <span class="text-xl">📱</span>
+              <span class="group-hover:text-brand">07598 946967</span>
+            </a>
+            <a href="mailto:runcornjoinery@gmail.com" class="flex items-center justify-center gap-3 group text-lg">
+              <span class="text-xl">✉️</span>
+              <span class="group-hover:text-brand">runcornjoinery@gmail.com</span>
+            </a>
+            <a class="flex items-center justify-center gap-3 group text-lg"
+               href="https://www.facebook.com/people/Runcorn-Joinery/100054297770708/"
+               target="_blank" rel="noopener">
+              <span class="text-xl">👍</span>
+              <span class="group-hover:text-brand">Runcorn Joinery on Facebook</span>
+            </a>
+          </div>
 
-        <!-- Netlify-ready Contact Form (mock) -->
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-              class="rounded-3xl border border-gray-200 bg-white/80 p-8 shadow-md text-left">
+          <!-- Netlify-ready Contact Form (mock) -->
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+                class="rounded-3xl border border-gray-200 bg-white/80 p-8 shadow-md text-left">
           <!-- Netlify requirements -->
           <input type="hidden" name="form-name" value="contact" />
           <!-- Honeypot -->
@@ -316,6 +347,7 @@
             <p class="text-xs text-inkDim">By submitting, you agree we may contact you about your enquiry.</p>
           </div>
         </form>
+        </div>
       </div>
     </div>
   </section>
