@@ -1,2 +1,5 @@
 [build]
-  publish = "rj1"
+  base    = "rj1"   # ← start in the rj1 folder
+  publish = "."     # ← publish the folder we are in (rj1 itself)
+  command = ""      # ← no build command for plain HTML
+
