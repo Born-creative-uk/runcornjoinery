@@ -147,33 +147,41 @@
     </div>
   </header>
 
-  <!-- Hero -->
-<section id="top" class="relative overflow-hidden bg-gradient-to-b from-white via-white to-brandLight/20">
-  <div class="container section-pad grid gap-12 md:grid-cols-2 md:items-center lg:gap-16 fade-section is-visible">
-    <!-- Text content -->
-    <div>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
-        Bespoke Kitchens & Joinery
+  <!-- Header / Hero -->
+<header class="site-header" id="top">
+  <nav class="container nav">
+    <a class="brand" href="#top" aria-label="Runcorn Joinery"></a>
+  </nav>
+
+  <section class="hero fade-on-load" aria-label="Intro">
+    <div class="hero-content mx-auto max-w-3xl px-4 py-12 text-center">
+      <!-- LOGO ABOVE TITLE, NO BORDER BOX -->
+      <img
+        src="./assets/logo.svg"
+        alt="Runcorn Joinery logo"
+        class="hero-logo mx-auto w-[180px] md:w-[240px] h-auto select-none"
+      />
+
+      <h1 class="hero-title mt-4 text-3xl md:text-5xl font-extrabold">
+        Bespoke Kitchens &amp; Joinery
       </h1>
-      <p class="mt-4 text-lg text-inkDim">
-        Affordable quality • 25+ years’ experience • Free consultation
+
+      <p class="hero-sub mt-2 text-[var(--ink-dim)]">
+        Affordable quality • 25+ years experience • Free consultation
       </p>
 
-      <div class="mt-6 flex flex-wrap gap-3">
-        <a href="tel:+441928890493" class="rounded-lg bg-brand px-5 py-3 text-white hover:opacity-90">
+      <!-- CENTRED BUTTONS -->
+      <div class="hero-actions mt-6 flex flex-wrap items-center justify-center gap-3">
+        <a class="btn inline-flex justify-center px-6 py-3" href="tel:+441928890493">
           Call: 01928 890493
+        </a>
+        <a class="btn btn-secondary inline-flex justify-center px-6 py-3" href="mailto:runcornjoinery@gmail.com">
+          Email Us
         </a>
       </div>
     </div>
-
-    <!-- Hero visual: now your logo -->
-    <div class="relative flex items-center justify-center">
-      <div class="aspect-[4/3] w-full max-w-lg rounded-3xl border border-gray-200 bg-gradient-to-br from-gray-50 via-white to-brandLight/40 shadow-xl flex items-center justify-center">
-        <img src="./assets/logo.svg" alt="Runcorn Joinery logo" class="h-72 w-auto md:h-80 lg:h-[22rem] drop-shadow-lg">
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+</header>
 
 
   <!-- About -->
@@ -456,4 +464,5 @@
   </script>
 </body>
 </html>
+
 
