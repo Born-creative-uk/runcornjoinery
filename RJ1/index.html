@@ -130,9 +130,21 @@
         <a href="#contact" class="hover:text-brand">Contact</a>
       </div>
 
-      <!-- Mobile menu trigger (placeholder) -->
-      <button class="md:hidden p-2 rounded hover:bg-gray-100" aria-label="Open menu">☰</button>
+      <!-- Mobile menu trigger -->
+      <button id="mobileMenuButton" class="md:hidden p-2 rounded hover:bg-gray-100" aria-label="Toggle menu" aria-expanded="false">
+        ☰
+      </button>
     </nav>
+
+    <!-- Mobile menu panel -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-gray-100 bg-white">
+      <div class="container flex flex-col items-stretch py-4 gap-3">
+        <a href="#about" class="py-2 text-left hover:text-brand" data-mobile-nav-link>About</a>
+        <a href="#services" class="py-2 text-left hover:text-brand" data-mobile-nav-link>Services</a>
+        <a href="#gallery" class="py-2 text-left hover:text-brand" data-mobile-nav-link>Gallery</a>
+        <a href="#contact" class="py-2 text-left hover:text-brand" data-mobile-nav-link>Contact</a>
+      </div>
+    </div>
   </header>
 
   <!-- Hero -->
@@ -150,12 +162,6 @@
       <div class="mt-6 flex flex-wrap gap-3">
         <a href="tel:+441928890493" class="rounded-lg bg-brand px-5 py-3 text-white hover:opacity-90">
           Call: 01928 890493
-        </a>
-        <a href="mailto:runcornjoinery@gmail.com" class="rounded-lg border border-gray-300 px-5 py-3 hover:bg-gray-50">
-          Email Us
-        </a>
-        <a href="#contact" class="rounded-lg border border-gray-300 px-5 py-3 hover:bg-gray-50">
-          Contact Details
         </a>
       </div>
     </div>
@@ -320,6 +326,37 @@
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const fadeSections = document.querySelectorAll('.fade-section');
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuLinks = mobileMenu ? mobileMenu.querySelectorAll('[data-mobile-nav-link]') : [];
+
+    const closeMobileMenu = () => {
+      if (!mobileMenuButton || !mobileMenu) return;
+      mobileMenu.classList.add('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', 'false');
+    };
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+          closeMobileMenu();
+        } else {
+          mobileMenu.classList.remove('hidden');
+          mobileMenuButton.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!mobileMenu.contains(event.target) && event.target !== mobileMenuButton) {
+          closeMobileMenu();
+        }
+      });
+
+      mobileMenuLinks.forEach((link) => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+    }
 
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
